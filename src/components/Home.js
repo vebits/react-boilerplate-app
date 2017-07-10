@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
-
-class Home extends Component {
-  render() {
-    return (
-      <h1>react-boilerplate-app</h1>
-    );
-  }
-}
+const Home = () => (
+  <div>
+    <h2>Welcome to react-boilerplate-app by <a href="https://vebjorni.com">@vebjorni</a></h2>
+  </div>
+)
 
 export default Home;

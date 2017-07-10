@@ -1,3 +1,12 @@
-h1 {
+h2 {
   color: pink;
+}
+
+a {
+  text-decoration: none;
+  color: pink;
+}
+
+a:hover {
+  color: purple;
 }

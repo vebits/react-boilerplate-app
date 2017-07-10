@@ -1,22 +1,39 @@
+var webpack = require('webpack');
+var path = require('path');
+
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './src/index.js'
+  ],
 
   output: {
-    path: 'build',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['babel-loader']
+        use: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader']
-      }
-    ]
-  }
+        use: ['style-loader', 'css-loader']
+      },
+    ],
+  },
+
+  devServer: {
+    historyApiFallback: true,
+    hot: true
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+  ]
 };

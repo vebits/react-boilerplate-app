@@ -1,15 +1,24 @@
-// Libs
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 
-// CSS
-import './css/style.css';
+import { AppContainer } from 'react-hot-loader';
 
-// Routes
-import routes from './router';
+import App from './components/App';
 
-// Render
-render(
-  routes,
-  document.getElementById('root')
-);
+const render = (Component) => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('root')
+  );
+};
+
+render(App);
+
+// Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('./components/App', () => {
+    render(App)
+  });
+}
